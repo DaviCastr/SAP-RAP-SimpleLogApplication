@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Definição de serviço para YC_LOG_MAT_DFLC'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'YC_LOG_MAT_DFLC'
+  }
+}
+define service YUI_LOG_MAT_DFLC_O4 provider contracts odata_v4_ui {
+  expose YC_LOG_MAT_DFLC as LogMaterial;
+}

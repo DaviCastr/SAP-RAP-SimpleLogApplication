@@ -1,0 +1,47 @@
+managed implementation in class YCL_LOG_MAT_DFLC unique;
+strict ( 2 );
+with draft;
+define behavior for YI_LOG_MAT_DFLC alias LogMaterial
+persistent table YTB_LOG_MAT_DFLC
+draft table YTB_LG_MT_DFLC_D
+etag master LastChangeAt
+lock master total etag LastChangeAt
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   Id;
+
+  field ( readonly )
+   LastChangeAt,
+   LastChangedBy,
+   CreatedAt,
+   CreatedBy;
+
+  field ( readonly : update )
+   Id;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for YTB_LOG_MAT_DFLC
+  {
+    Id = id;
+    ObjectChanged = object_changed;
+    ValueOld = value_old;
+    ValueNew = value_new;
+    Project = project;
+    LastChangeAt = last_change_at;
+    LastChangedBy = last_changed_by;
+    CreatedAt = created_at;
+    CreatedBy = created_by;
+  }
+}
